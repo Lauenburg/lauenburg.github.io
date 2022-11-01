@@ -118,5 +118,20 @@ a:active {
     text-align: center;
     display: inline-block;
     font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+.resources {
+    background-color: #F5F5F5; 
+    border: none;
+    border-radius: 12px;
+    color: hwb(0 0% 100%);
+    margin-top: 8px;
+    padding: 8px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
     white-space: nowrap;
   }
