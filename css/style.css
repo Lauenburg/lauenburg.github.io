@@ -48,6 +48,13 @@ img.img-logo {
   object-fit: contain;
 }
 
+/* Specific styling for DB Systel logo to make it more prominent */
+img[src="images/misc/dbsystel.png"] {
+  height: 7em;
+  width: 15em;
+  object-fit: contain;
+}
+
 #intro {
   margin-top: 0em !important;
 }
