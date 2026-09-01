@@ -1,6 +1,38 @@
-body {
-  /*font-family: 'Open Sans';*/
+/* ---------- Design tokens ---------- */
+:root {
+  --ink: #333537;
+  --ink-strong: #16181a;
+  --muted: #6b7076;
+  --accent: #d54343;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-pill: #f1f2f4;
+  --border: #e5e7eb;
+  --radius: 10px;
+  --ease: 0.18s ease;
+  --font-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
   scroll-behavior: smooth;
+  /* keep anchored headings clear of the viewport edge */
+  scroll-padding-top: 2rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background-color: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Typography ---------- */
+.content h2 {
+  color: var(--ink-strong);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .content h3 {
@@ -8,21 +40,37 @@ body {
   margin-top: 2em !important;
 }
 
-.menu-list a.is-active {
-  background-color: #4a4a4a;
-  color: rgb(255, 255, 255);
+.content b,
+.content strong {
+  color: var(--ink-strong);
   font-weight: 600;
 }
 
 .details h3 {
   font-weight: 600;
   font-size: 1em;
-  color: #000;
+  color: var(--ink-strong);
 }
 
+.columns:not(:last-child) {
+  margin-bottom: 1.75rem !important;
+}
+
+/* ---------- Sidebar ---------- */
 .profile {
   padding-right: 1em;
   padding-left: 1em;
+}
+
+.profile img {
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border), 0 6px 18px rgba(16, 18, 20, 0.08);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.profile img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px var(--border), 0 10px 26px rgba(16, 18, 20, 0.13);
 }
 
 .sticky {
@@ -36,10 +84,115 @@ body {
   font-size: 1em;
 }
 
+.social a {
+  color: var(--muted);
+  transition: color var(--ease);
+}
+
+.social a + a {
+  margin-left: 15px;
+}
+
+.social a:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.social a svg {
+  transition: transform var(--ease);
+}
+
+.social a:hover svg {
+  transform: translateY(-2px) scale(1.12);
+}
+
 .sidebar {
   padding-bottom: 2em;
   padding-top: 1em;
   font-size: 1em;
+}
+
+#sidebar {
+  width: 75%;
+}
+
+.menu-label {
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.menu-list a {
+  border-radius: 6px;
+  color: var(--ink);
+  transition: background-color var(--ease), color var(--ease);
+}
+
+.menu-list a:hover {
+  background-color: var(--surface-pill);
+  color: var(--ink-strong);
+}
+
+.menu-list a.is-active {
+  background-color: var(--ink);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#sidebar a:hover {
+  text-decoration: none;
+}
+
+/* ---------- CV widget ---------- */
+.cv-widget {
+  width: 75%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 20px;
+  background: var(--surface-soft);
+}
+
+.cv-widget .cv-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink-strong);
+  margin-bottom: 10px;
+}
+
+.cv-widget .cv-date {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cv-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cv-actions a {
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: border-color var(--ease), color var(--ease),
+    background-color var(--ease), transform var(--ease);
+}
+
+.cv-actions a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ---------- Logos ---------- */
+.column.is-3 {
+  margin: auto;
 }
 
 img.img-logo {
@@ -55,72 +208,84 @@ img[src="images/misc/dbsystel.png"] {
   object-fit: contain;
 }
 
-#intro {
-  margin-top: 0em !important;
+/* ---------- Entries ---------- */
+.right-panel article.columns {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
-.column.is-3 {
-  margin: auto;
+.right-panel article.columns:last-of-type {
+  border-bottom: none;
 }
 
-#intro {
-  margin-top: 0em !important;
+/* the section heading already provides the rule, and its own top margin
+   supplies the gap — so the entry adds neither a line nor extra padding */
+.right-panel article.columns:has(+ h2) {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.columns:not(:last-child) {
-  margin-bottom: 1.75rem !important;
+.right-panel article figure.image img {
+  border-radius: 6px;
+  transition: transform var(--ease);
 }
 
-#sidebar {
-  width: 75%;
+.right-panel article:hover figure.image img {
+  transform: scale(1.02);
 }
 
-@media screen and (min-width: 769px),
-print {
-  .column.is-2_5 {
-    flex: none;
-    width: 25%;
-  }
+.entry-meta {
+  color: var(--muted);
+  font-size: 0.9em;
 }
 
-/* https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf */
+.content p.lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.venue {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------- Links ---------- */
+.details a,
+.right-panel a {
+  color: var(--ink-strong);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--ease), text-decoration-color var(--ease);
+}
+
 .details a:hover,
 .right-panel a:hover {
-  color: rgb(238, 76, 44);
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 a:active {
-  color: rgb(238, 76, 44);
-}
-
-#sidebar a:hover {
-  text-decoration: none;
-}
-
-.social a:hover {
-  text-decoration: none;
-  color: #4a4a4a;
-}
-
-.social a:hover svg {
-  transform: scale(1.5);
+  color: var(--accent);
 }
 
 .dark {
-  color: #4a4a4a !important;
+  color: var(--ink) !important;
 }
 
 .dark:hover {
-  color: #4a4a4a !important;
+  color: var(--ink) !important;
 }
 
+/* ---------- Pills ---------- */
 .active_project {
-  background-color: #d54343;
+  background-color: var(--accent);
   opacity: 0.8;
   border: none;
-  border-radius: 12px;
+  border-radius: 999px;
   color: white;
-  padding: 8px 5px;
+  padding: 6px 14px;
   text-align: center;
   display: inline-block;
   font-size: 14px;
@@ -129,15 +294,196 @@ a:active {
 }
 
 .resources {
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 12px;
-  color: hwb(0 0% 100%);
+  background-color: var(--surface-pill);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--ink-strong) !important;
   margin-top: 8px;
-  padding: 8px 5px;
+  margin-right: 4px;
+  padding: 6px 14px;
   text-align: center;
   display: inline-block;
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
+  text-decoration: none !important;
+  transition: background-color var(--ease), border-color var(--ease),
+    color var(--ease), transform var(--ease);
+}
+
+.resources:hover {
+  background-color: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent) !important;
+  transform: translateY(-1px);
+}
+
+/* ---------- View switcher ---------- */
+/* No rule on the track: the section headings below carry their own
+   border-bottom, and two stacked rules read as a collision. */
+.viewtabs {
+  display: flex;
+  gap: 28px;
+  margin: 2.75rem 0 2.75rem;
+}
+
+.viewtab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 8px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--ease), border-color var(--ease);
+}
+
+.viewtab:hover {
+  color: var(--ink-strong);
+}
+
+.viewtab.is-active {
+  color: var(--ink-strong);
+  border-bottom-color: var(--ink-strong);
+}
+
+.viewtab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+/* bootstrap.css also ships a .panel component; neutralize it so our
+   tab panels stay transparent (its white background broke dark mode) */
+.right-panel .panel {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+/* Section headings inside a panel match the switcher's type treatment, so
+   the switcher reads as the heading for the first (Experience) section. */
+.right-panel > .content > h2 {
+  /* block (not inline-block) so the margin collapses with the entry above
+     it; fit-content keeps the underline hugging the text */
+  display: block;
+  width: fit-content;
+  margin: 2rem 0 1.5rem;
+  padding: 0 0 8px;
+  border-bottom: 2px solid var(--ink-strong);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.right-panel > .content > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* ---------- Footer ---------- */
+footer.container {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+footer hr {
+  background-color: var(--border);
+}
+
+/* ---------- Layout ---------- */
+@media screen and (min-width: 769px), print {
+  .column.is-2_5 {
+    flex: none;
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #sidebar,
+  .cv-widget {
+    width: 100%;
+  }
+
+  .sticky {
+    position: static;
+  }
+}
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #c9ced4;
+    --ink-strong: #f2f4f6;
+    --muted: #8b939c;
+    --accent: #ff7a6b;
+    --surface: #15171a;
+    --surface-soft: #1c1f23;
+    --surface-pill: #23272c;
+    --border: #2e333a;
+  }
+
+  html,
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+  }
+
+  .content,
+  .content p,
+  .content li,
+  .content i {
+    color: var(--ink);
+  }
+
+  .content h1,
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6 {
+    color: var(--ink-strong);
+  }
+
+  .menu-list a.is-active {
+    background-color: var(--surface-pill);
+    color: var(--ink-strong);
+  }
+
+  .active_project {
+    color: #15171a;
+  }
+
+  .profile img {
+    box-shadow: 0 0 0 1px var(--border), 0 6px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  /* company logos are dark-on-transparent PNGs; keep them readable */
+  img.img-logo {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 6px;
+  }
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
 }
