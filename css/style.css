@@ -33,8 +33,6 @@ body {
   color: var(--ink-strong);
   font-weight: 600;
   letter-spacing: -0.01em;
-  padding-bottom: 0.35em;
-  border-bottom: 1px solid var(--border);
 }
 
 .content h3 {
@@ -52,10 +50,6 @@ body {
   font-weight: 600;
   font-size: 1em;
   color: var(--ink-strong);
-}
-
-#intro {
-  margin-top: 0em !important;
 }
 
 .columns:not(:last-child) {
@@ -224,6 +218,13 @@ img[src="images/misc/dbsystel.png"] {
   border-bottom: none;
 }
 
+/* the section heading already provides the rule, and its own top margin
+   supplies the gap — so the entry adds neither a line nor extra padding */
+.right-panel article.columns:has(+ h2) {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 .right-panel article figure.image img {
   border-radius: 6px;
   transition: transform var(--ease);
@@ -236,6 +237,11 @@ img[src="images/misc/dbsystel.png"] {
 .entry-meta {
   color: var(--muted);
   font-size: 0.9em;
+}
+
+.content p.lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .venue {
@@ -312,9 +318,78 @@ a:active {
   transform: translateY(-1px);
 }
 
-.resources.is-highlight {
-  background-color: rgba(213, 67, 67, 0.1);
-  color: var(--accent) !important;
+/* ---------- View switcher ---------- */
+/* No rule on the track: the section headings below carry their own
+   border-bottom, and two stacked rules read as a collision. */
+.viewtabs {
+  display: flex;
+  gap: 28px;
+  margin: 2.75rem 0 2.75rem;
+}
+
+.viewtab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 8px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--ease), border-color var(--ease);
+}
+
+.viewtab:hover {
+  color: var(--ink-strong);
+}
+
+.viewtab.is-active {
+  color: var(--ink-strong);
+  border-bottom-color: var(--ink-strong);
+}
+
+.viewtab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+/* bootstrap.css also ships a .panel component; neutralize it so our
+   tab panels stay transparent (its white background broke dark mode) */
+.right-panel .panel {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+/* Section headings inside a panel match the switcher's type treatment, so
+   the switcher reads as the heading for the first (Experience) section. */
+.right-panel > .content > h2 {
+  /* block (not inline-block) so the margin collapses with the entry above
+     it; fit-content keeps the underline hugging the text */
+  display: block;
+  width: fit-content;
+  margin: 2rem 0 1.5rem;
+  padding: 0 0 8px;
+  border-bottom: 2px solid var(--ink-strong);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.right-panel > .content > *:first-child {
+  margin-top: 0 !important;
 }
 
 /* ---------- Footer ---------- */

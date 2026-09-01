@@ -38,8 +38,11 @@
     />
 
     <!-- Bulma Version 0.7.5-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
-    <link href="css/style.css?_t=20260901" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css"
+    />
+    <link href="css/style.css?_t=20260901e" rel="stylesheet" type="text/css" />
     <script defer src="font-awesome/js/brands.min.js"></script>
     <script defer src="font-awesome/js/regular.min.js"></script>
     <script defer src="font-awesome/js/fontawesome.min.js"></script>
@@ -83,22 +86,22 @@
                 >
                   <span class="fab fa-stack-overflow fa-2x"></span>
                 </a>
-                <a
-                  href="mailto:lauenburg.leander@hotmail.de"
-                  aria-label="Email"
-                >
+                <a href="mailto:lauenburg.leander@hotmail.de" aria-label="Email">
                   <span class="fa-regular fa-envelope fa-2x"></span>
                 </a>
               </div>
 
               <div id="sidebar" class="menu sticky is-hidden-mobile">
                 <p class="menu-label"><b>Quick Links</b></p>
-                <ul class="menu-list">
-                  <li><a href="#intro">About Me</a></li>
-                  <li><a href="#research">Research</a></li>
-                  <li><a href="#experience">Experience</a></li>
-                  <li><a href="#projects">Projects</a></li>
-                  <li><a href="#awards">Awards</a></li>
+                <ul class="menu-list nav-for" data-panel="research">
+                  <li><a href="#about">About Me</a></li>
+                  <li><a href="#views">Experience</a></li>
+                  <li><a href="#r-projects">Publications &amp; Projects</a></li>
+                  <li><a href="#r-awards">Awards</a></li>
+                </ul>
+                <ul class="menu-list nav-for" data-panel="work" hidden>
+                  <li><a href="#about">About Me</a></li>
+                  <li><a href="#views">Experience</a></li>
                 </ul>
               </div>
 
@@ -123,14 +126,18 @@
           </div>
 
           <div class="column right-panel">
-            <div class="content">
-              <!--About Me-->
-              <h2 id="intro">About Me</h2>
-              <p style="text-align: justify">
-                I am a researcher and developer with a strong foundation in
-                artificial intelligence, focused on building open and impactful
-                solutions that bridge science and engineering. I hold both a
-                B.Sc. in
+            <!-- Shared intro, common to both views -->
+            <div class="content" id="about">
+              <h2>About Me</h2>
+              <p class="lead" style="text-align: justify">
+                I am a first-year PhD student in the
+                <a href="https://vcg.seas.harvard.edu/"
+                  >Visual Computing Group (VCG)</a
+                >
+                at Harvard University, advised by
+                <a href="https://vcg.seas.harvard.edu/people"
+                  >Prof. Hanspeter Pfister</a
+                >. I hold a B.Sc. in
                 <a
                   href="https://www.tum.de/en/studies/degree-programs/detail/engineering-science-bachelor-of-science-bsc"
                   >Engineering Science</a
@@ -140,90 +147,53 @@
                   href="https://www.tum.de/en/studies/degree-programs/detail/robotics-cognition-intelligence-master-of-science-msc"
                   >Robotics, Cognition, and Intelligence</a
                 >
-                from the Technical University of Munich (TUM). During my
-                Bachelor's, I worked as a student researcher at the national
-                research institute <a href="https://www.fortiss.org/">fortiss</a
-                >, where I also wrote my Bachelor's thesis. Afterward, I joined
-                <a href="https://www.deevio.ai/">deevio</a> as a Data Scientist,
-                then moved to Predicpro (now
-                <a href="https://www.stryza.com/">Stryza</a>), a
-                <a href="https://www.wattx.io/">WATTx</a> venture, as Technical
-                Project Lead and Integrated Systems Engineer. While completing
-                my M.Sc., I gained further experience at
-                <a href="https://www.agile-robots.com/">Agile Robots AG</a> in
-                software and perception. For my Master's thesis, I was invited to
-                Harvard's
-                <a href="https://vcg.seas.harvard.edu/"
-                  >Visual Computing Group (VCG)</a
-                >
-                as a Research Fellow, where I developed
-                <a href="https://ieeexplore.ieee.org/document/10138543"
-                  >CySGAN</a
-                >, a 3D domain adaptation and instance segmentation method for
-                neurobiology, published in IEEE JBHI 2023. After returning from
-                the US, I joined
-                <a href="https://merantix-momentum.com/">Merantix Momentum</a>
-                as a Research Software Engineer, building scalable MLOps
-                infrastructure and CI/CD pipelines for safety-critical ML, and
-                then spent two and a half years as a Senior Specialist for AI
-                &amp; Software at <a href="https://www.dbsystel.de/">DB Systel</a
-                >, leading core logic development in a large-scale R&amp;D
-                project on train dispatching automation and delay mitigation.
-                Alongside that role, I returned to the VCG as a Research
-                Affiliate to lead the development of
-                <a href="https://github.com/PytorchConnectomics/SynAnno"
-                  >SynAnno</a
-                >, an interactive proofreading tool for synaptic annotations,
-                which I presented at IEEE VIS 2025 in Vienna and which received
-                the
-                <a href="https://www.replicabilitystamp.org/"
-                  >Graphics Replicability Stamp</a
-                >. I am now a first-year PhD student in the Visual Computing
-                Group at Harvard University.
+                from the Technical University of Munich. Before returning to
+                academia I spent several years in industry - at
+                <a href="https://www.deevio.ai/">deevio</a>,
+                <a href="https://www.wattx.io/">WATTx</a>,
+                <a href="https://www.agile-robots.com/">Agile Robots</a> and
+                <a href="https://merantix-momentum.com/">Merantix Momentum</a>,
+                and most recently as Senior Specialist for AI &amp; Software at
+                <a href="https://www.dbsystel.de/">DB Systel</a>.
               </p>
+            </div>
 
-              <!--Research-->
-              <h2 id="research">Research</h2>
-              <p style="text-align: justify">
-                I work on accelerating neuroscientific discovery through
-                open-source tools for scalable connectomics, and on advancing 3D
-                segmentation for emerging image modalities and
-                annotation-scarce settings. My methodological focus is
-                structurally consistent domain adaptation, cross-domain
-                pretraining, and semi-supervised learning — paving the way
-                toward connectomics foundation models.
-              </p>
+            <!-- View switcher -->
+            <div
+              class="viewtabs"
+              id="views"
+              role="tablist"
+              aria-label="Profile sections"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="tab-research"
+                class="viewtab"
+                aria-controls="panel-research"
+                aria-selected="true"
+              >
+                Research and Education
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="tab-work"
+                class="viewtab"
+                aria-controls="panel-work"
+                aria-selected="false"
+              >
+                Work Experience
+              </button>
+            </div>
 
-              <h3>Education</h3>
-              <ul>
-                <li>
-                  <b>Ph.D. Computer Science</b>, Harvard University,
-                  2026&ndash;Present<br />
-                  <span class="entry-meta"
-                    >Visual Computing Group, advised by Prof. Hanspeter
-                    Pfister</span
-                  >
-                </li>
-                <li>
-                  <b>M.Sc. Robotics, Cognition, Intelligence</b>, Technical
-                  University of Munich, 2019&ndash;2022<br />
-                  <span class="entry-meta"
-                    >Thesis: "3D Instance Segmentation of an Unlabeled Modality
-                    via Cyclic Segmentation GANs"</span
-                  >
-                </li>
-                <li>
-                  <b>B.Sc. Engineering Science</b>, Technical University of
-                  Munich, 2014&ndash;2018<br />
-                  <span class="entry-meta"
-                    >Thesis: "Energy-based Condition Monitoring for Industry
-                    4.0"</span
-                  >
-                </li>
-              </ul>
-
-              <!--Experience-->
-              <h2 id="experience" style="margin-bottom: 25px">Experience</h2>
+            <!-- ============ RESEARCH ============ -->
+            <div
+              class="content panel"
+              id="panel-research"
+              role="tabpanel"
+              aria-labelledby="tab-research"
+            >
 
               <article class="columns">
                 <div class="column is-3">
@@ -261,102 +231,6 @@
                 <div class="column is-3">
                   <figure class="image">
                     <img
-                      src="images/misc/dbsystel.png"
-                      class="img-logo"
-                      alt="DB Systel"
-                    />
-                  </figure>
-                </div>
-                <div class="column">
-                  <p style="margin-bottom: 4px">
-                    <b>Senior Specialist for AI &amp; Software</b> | R&amp;D
-                    Project KIDispo, DB Systel <br />
-                    <span class="entry-meta">Dec 2023 &ndash; Jun 2026</span>
-                  </p>
-                  <p>
-                    I designed and led the implementation of core logic
-                    components for a national R&amp;D project automating train
-                    dispatching across Germany's rail network, covering
-                    simulation, disruption handling, and delay mitigation, and
-                    supporting national rollout and operation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="columns">
-                <div class="column is-3">
-                  <figure class="image">
-                    <img
-                      src="images/misc/harvard.png"
-                      class="img-logo"
-                      alt="Harvard University"
-                    />
-                  </figure>
-                </div>
-                <div class="column">
-                  <p style="margin-bottom: 4px">
-                    <b>Research Affiliate</b> | Visual Computing Group, Harvard
-                    University<br />
-                    <span class="entry-meta"
-                      >Nov 2024 &ndash; Jun 2025 (alongside DB Systel).
-                      Advisor:
-                      <a
-                        href="https://vcg.seas.harvard.edu/people"
-                        target="_blank"
-                        rel="noopener"
-                        >Prof. Hanspeter Pfister</a
-                      ></span
-                    >
-                  </p>
-                  <p>
-                    Designed SynAnno, an interactive tool for neuron-centric
-                    proofreading, integrating guided workflows, path planning,
-                    3D visualization, and ML-based error correction. Published
-                    at IEEE VIS 2025 and awarded the Graphics Replicability
-                    Stamp.
-                  </p>
-                </div>
-              </article>
-
-              <article class="columns">
-                <div class="column is-3">
-                  <figure class="image">
-                    <img
-                      src="images/misc/merantix.png"
-                      class="img-logo"
-                      alt="Merantix Momentum"
-                    />
-                  </figure>
-                </div>
-                <div class="column">
-                  <p style="margin-bottom: 4px">
-                    <b>Research Software Engineer</b> | Research Team, Merantix
-                    Momentum<br />
-                    <span class="entry-meta"
-                      >Feb 2023 &ndash; Jun 2023. Mentor:
-                      <a
-                        href="https://www.linkedin.com/in/jotterbach/"
-                        target="_blank"
-                        rel="noopener"
-                        >Dr. Johannes Otterbach</a
-                      ></span
-                    >
-                  </p>
-                  <p>
-                    <i
-                      >Mr. Lauenburg is distinguished by his excellent
-                      team-oriented work ethic, outstanding communication
-                      skills, and very high flexibility. - Dr. Johannes
-                      Otterbach</i
-                    >
-                  </p>
-                </div>
-              </article>
-
-              <article class="columns">
-                <div class="column is-3">
-                  <figure class="image">
-                    <img
                       src="images/misc/harvard.png"
                       class="img-logo"
                       alt="Harvard University"
@@ -378,11 +252,7 @@
                     >
                   </p>
                   <p>
-                    <i
-                      >We would like to strongly recommend him [Leander] for any
-                      academic programs or industry positions without
-                      reservation. - Prof. Hanspeter Pfister</i
-                    >
+                    Developed CySGAN for annotation-free cross-modal 3D nuclei segmentation, and started working on SynAnno, an interactive system for proofreading synaptic annotations.
                   </p>
                 </div>
               </article>
@@ -391,32 +261,22 @@
                 <div class="column is-3">
                   <figure class="image">
                     <img
-                      src="images/misc/agilerobots.png"
+                      src="images/misc/tum.svg"
                       class="img-logo"
-                      alt="Agile Robots"
+                      alt="Technical University of Munich"
                     />
                   </figure>
                 </div>
                 <div class="column">
                   <p style="margin-bottom: 4px">
-                    <b>Working Student</b> | Department for Perception and
-                    Software Development, AgileRobots <br />
-                    <span class="entry-meta"
-                      >Nov 2020 &ndash; Jun 2021. Mentor:
-                      <a
-                        href="https://www.linkedin.com/in/patrick-schulte/"
-                        target="_blank"
-                        rel="noopener"
-                        >Patrick Schulte</a
-                      ></span
-                    >
+                    <b>M.Sc. Robotics, Cognition, Intelligence</b> | Technical
+                    University of Munich<br />
+                    <span class="entry-meta">2019 &ndash; 2022</span>
                   </p>
                   <p>
-                    <i
-                      >Leander has been an exceptional dedicated and driven team
-                      member who consistently demonstrated his highly efficient
-                      and independent work style. - Patrick Schulte</i
-                    >
+                    Thesis: "3D Instance Segmentation of an Unlabeled Modality
+                    via Cyclic Segmentation GANs", written during my research
+                    stay with the Visual Computing Group at Harvard.
                   </p>
                 </div>
               </article>
@@ -425,112 +285,28 @@
                 <div class="column is-3">
                   <figure class="image">
                     <img
-                      src="images/misc/wattx.png"
+                      src="images/misc/tum.svg"
                       class="img-logo"
-                      alt="WATTx"
+                      alt="Technical University of Munich"
                     />
                   </figure>
                 </div>
                 <div class="column">
                   <p style="margin-bottom: 4px">
-                    <b>Entrepreneur in Residence (Tech Lead)</b> | Stryza
-                    (formerly Predicpro), WATTx<br />
-                    <span class="entry-meta"
-                      >May 2019 &ndash; Oct 2019. Mentor:
-                      <a
-                        href="https://www.linkedin.com/in/martin-mittermeier-85502672/"
-                        target="_blank"
-                        rel="noopener"
-                        >Dr. Martin Mittermeier</a
-                      ></span
-                    >
+                    <b>B.Sc. Engineering Science</b> | Technical University of
+                    Munich<br />
+                    <span class="entry-meta">2014 &ndash; 2018</span>
                   </p>
                   <p>
-                    <i
-                      >Leander's work laid the new foundation for Predicpro [<a
-                        href="https://www.stryza.com/"
-                        >Stryza</a
-                      >] for which we are entirely grateful. His vision and
-                      hard-work ultimately resulted, among other things, in a
-                      pilot project with a DAX listed company." - Dr. Martin
-                      Mittermeier</i
-                    >
+                    Thesis: "Energy-based Condition Monitoring for Industry
+                    4.0", written as a student researcher at
+                    <a href="https://www.fortiss.org/">fortiss</a>.
                   </p>
                 </div>
               </article>
 
-              <article class="columns">
-                <div class="column is-3">
-                  <figure class="image">
-                    <img
-                      src="images/misc/deevio.png"
-                      class="img-logo"
-                      alt="deevio"
-                    />
-                  </figure>
-                </div>
-                <div class="column">
-                  <p style="margin-bottom: 4px">
-                    <b>Data Scientist Intern</b> | Engineering Team, deevio
-                    <br />
-                    <span class="entry-meta"
-                      >Nov 2018 &ndash; May 2019. Mentor:
-                      <a
-                        href="https://www.linkedin.com/in/glander/"
-                        target="_blank"
-                        rel="noopener"
-                        >Dr. Tassilo Glander</a
-                      ></span
-                    >
-                  </p>
-                  <p>
-                    <i
-                      >We would like to highlight Leander's versatility and
-                      independent working style, as he proactively identified
-                      and resolved issues related to his current tasks. - Dr.
-                      Tassilo Glander</i
-                    >
-                  </p>
-                </div>
-              </article>
+              <h2 id="r-projects">Publications &amp; Projects</h2>
 
-              <article class="columns">
-                <div class="column is-3">
-                  <figure class="image">
-                    <img
-                      src="images/misc/fortiss.png"
-                      class="img-logo"
-                      alt="fortiss"
-                    />
-                  </figure>
-                </div>
-                <div class="column">
-                  <p style="margin-bottom: 4px">
-                    <b>Working Student</b> | Smart Energy Team, fortiss<br />
-                    <span class="entry-meta"
-                      >Jun 2017 &ndash; Sep 2018. Mentor:
-                      <a
-                        href="https://www.linkedin.com/in/markus-duchon-b39b64116/"
-                        target="_blank"
-                        rel="noopener"
-                        >Dr. Markus Duchon</a
-                      ></span
-                    >
-                  </p>
-                  <p>
-                    <i
-                      >Mr. Lauenburg shows an extraordinary level of commitment,
-                      an exceptional willingness to perform, and a great
-                      eagerness to learn. - Dr. Markus Duchon</i
-                    >
-                  </p>
-                </div>
-              </article>
-
-              <!--Projects-->
-              <h2 id="projects">Projects</h2>
-
-              <!--List of Projects-->
               <article class="columns">
                 <div class="column is-3">
                   <figure class="image">
@@ -557,8 +333,6 @@
                       developing it as a Research Fellow at Harvard
                       University's Visual Computing Group and completed it as a
                       Research Affiliate, alongside my full-time industry role.
-                      The work received the Graphics Replicability Stamp for
-                      reproducibility of results and commitment to open science.
                     </i>
                     <br />
                     <a
@@ -586,7 +360,7 @@
                       href="https://www.replicabilitystamp.org/"
                       target="_blank"
                       rel="noopener"
-                      class="resources is-highlight"
+                      class="resources"
                       >Replicability Stamp</a
                     >
                   </p>
@@ -789,22 +563,236 @@
                 </div>
               </article>
 
-              <!--Awards-->
-              <h2 id="awards">Awards</h2>
+
+              <h2 id="r-awards">Awards</h2>
               <ul>
-                <li>
-                  Graphics Replicability Stamp, Graphics Replicability Stamp
-                  Initiative (for SynAnno, IEEE VIS), 2025
-                </li>
                 <li>
                   IFI Scholarship (full stipend), German Academic Exchange
                   Service (DAAD), 2022
+                </li>
+                <li>
+                  Graphics Replicability Stamp for SynAnno, Graphics
+                  Replicability Stamp Initiative, 2025
                 </li>
                 <li>
                   First Place in TechChallenge BEFIVE, Innovation Challenge by
                   UnternehmerTUM, 2021
                 </li>
               </ul>
+            </div>
+
+            <!-- ============ WORK EXPERIENCE ============ -->
+            <div
+              class="content panel"
+              id="panel-work"
+              role="tabpanel"
+              aria-labelledby="tab-work"
+              hidden
+            >
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/dbsystel.png"
+                      class="img-logo"
+                      alt="DB Systel"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Senior Specialist for AI &amp; Software</b> | R&amp;D
+                    Project KIDispo, DB Systel <br />
+                    <span class="entry-meta">Dec 2023 &ndash; Jun 2026</span>
+                  </p>
+                  <p>
+                    <i
+                      >Mr. Lauenburg was an outstanding top performer whose
+                      achievements in every respect consistently earned our
+                      fullest recognition. He was the ideal employee. - Vera
+                      Müller</i
+                    >
+                    <br />
+                    <span class="entry-meta">Translated from German</span>
+                  </p>
+                </div>
+              </article>
+
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/merantix.png"
+                      class="img-logo"
+                      alt="Merantix Momentum"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Research Software Engineer</b> | Research Team, Merantix
+                    Momentum<br />
+                    <span class="entry-meta"
+                      >Feb 2023 &ndash; Jun 2023. Mentor:
+                      <a
+                        href="https://www.linkedin.com/in/jotterbach/"
+                        target="_blank"
+                        rel="noopener"
+                        >Dr. Johannes Otterbach</a
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <i
+                      >Mr. Lauenburg is distinguished by his excellent
+                      team-oriented work ethic, outstanding communication
+                      skills, and very high flexibility. - Dr. Johannes
+                      Otterbach</i
+                    >
+                  </p>
+                </div>
+              </article>
+
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/agilerobots.png"
+                      class="img-logo"
+                      alt="Agile Robots"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Working Student</b> | Department for Perception and
+                    Software Development, AgileRobots <br />
+                    <span class="entry-meta"
+                      >Nov 2020 &ndash; Jun 2021. Mentor:
+                      <a
+                        href="https://www.linkedin.com/in/patrick-schulte/"
+                        target="_blank"
+                        rel="noopener"
+                        >Patrick Schulte</a
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <i
+                      >Leander has been an exceptional dedicated and driven team
+                      member who consistently demonstrated his highly efficient
+                      and independent work style. - Patrick Schulte</i
+                    >
+                  </p>
+                </div>
+              </article>
+
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/wattx.png"
+                      class="img-logo"
+                      alt="WATTx"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Entrepreneur in Residence (Tech Lead)</b> | Stryza
+                    (formerly Predicpro), WATTx<br />
+                    <span class="entry-meta"
+                      >May 2019 &ndash; Oct 2019. Mentor:
+                      <a
+                        href="https://www.linkedin.com/in/martin-mittermeier-85502672/"
+                        target="_blank"
+                        rel="noopener"
+                        >Dr. Martin Mittermeier</a
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <i
+                      >Leander's work laid the new foundation for Predicpro [<a
+                        href="https://www.stryza.com/"
+                        >Stryza</a
+                      >] for which we are entirely grateful. His vision and
+                      hard-work ultimately resulted, among other things, in a
+                      pilot project with a DAX listed company." - Dr. Martin
+                      Mittermeier</i
+                    >
+                  </p>
+                </div>
+              </article>
+
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/deevio.png"
+                      class="img-logo"
+                      alt="deevio"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Data Scientist Intern</b> | Engineering Team, deevio
+                    <br />
+                    <span class="entry-meta"
+                      >Nov 2018 &ndash; May 2019. Mentor:
+                      <a
+                        href="https://www.linkedin.com/in/glander/"
+                        target="_blank"
+                        rel="noopener"
+                        >Dr. Tassilo Glander</a
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <i
+                      >We would like to highlight Leander's versatility and
+                      independent working style, as he proactively identified
+                      and resolved issues related to his current tasks. - Dr.
+                      Tassilo Glander</i
+                    >
+                  </p>
+                </div>
+              </article>
+
+              <article class="columns">
+                <div class="column is-3">
+                  <figure class="image">
+                    <img
+                      src="images/misc/fortiss.png"
+                      class="img-logo"
+                      alt="fortiss"
+                    />
+                  </figure>
+                </div>
+                <div class="column">
+                  <p style="margin-bottom: 4px">
+                    <b>Working Student</b> | Smart Energy Team, fortiss<br />
+                    <span class="entry-meta"
+                      >Jun 2017 &ndash; Sep 2018. Mentor:
+                      <a
+                        href="https://www.linkedin.com/in/markus-duchon-b39b64116/"
+                        target="_blank"
+                        rel="noopener"
+                        >Dr. Markus Duchon</a
+                      ></span
+                    >
+                  </p>
+                  <p>
+                    <i
+                      >Mr. Lauenburg shows an extraordinary level of commitment,
+                      an exceptional willingness to perform, and a great
+                      eagerness to learn. - Dr. Markus Duchon</i
+                    >
+                  </p>
+                </div>
+              </article>
+
             </div>
           </div>
         </div>
@@ -824,42 +812,126 @@
       // Keep the footer year current without a rebuild.
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Scrollspy for the sidebar: highlight the section currently in view.
       (function () {
-        var links = Array.prototype.slice.call(
-          document.querySelectorAll("#sidebar .menu-list a")
-        );
-        var sections = links
-          .map(function (link) {
-            return document.querySelector(link.hash);
-          })
-          .filter(Boolean);
+        var TABS = [
+          { key: "research", tab: "tab-research", panel: "panel-research" },
+          { key: "work", tab: "tab-work", panel: "panel-work" },
+        ];
 
-        if (!sections.length) return;
+        var current = null;
 
-        function activate(hash) {
-          links.forEach(function (link) {
+        function navFor(key) {
+          return document.querySelector('.nav-for[data-panel="' + key + '"]');
+        }
+
+        function show(key, updateHash) {
+          if (current === key) return;
+          current = key;
+
+          TABS.forEach(function (t) {
+            var on = t.key === key;
+            var tab = document.getElementById(t.tab);
+            var panel = document.getElementById(t.panel);
+            tab.setAttribute("aria-selected", on ? "true" : "false");
+            tab.classList.toggle("is-active", on);
+            panel.hidden = !on;
+
+            var nav = navFor(t.key);
+            if (nav) nav.hidden = !on;
+          });
+
+          if (updateHash) {
+            history.replaceState(null, "", "#" + key);
+          }
+          sync();
+        }
+
+        // Which panel does a given section id live in?
+        function panelKeyForSection(id) {
+          var el = document.getElementById(id);
+          if (!el) return null;
+          var panel = el.closest(".panel");
+          if (!panel) return null;
+          var match = TABS.filter(function (t) {
+            return t.panel === panel.id;
+          })[0];
+          return match ? match.key : null;
+        }
+
+        function applyHash() {
+          var raw = (location.hash || "").replace(/^#/, "");
+          if (!raw) {
+            show("research", false);
+            return;
+          }
+
+          var isTab = TABS.some(function (t) {
+            return t.key === raw;
+          });
+          if (isTab) {
+            show(raw, false);
+            window.scrollTo({ top: 0 });
+            return;
+          }
+
+          // Deep link to a section: switch to its panel first, then scroll.
+          // Sections outside any panel (the shared intro) keep the current view.
+          var target = document.getElementById(raw);
+          if (!target) {
+            show("research", false);
+            return;
+          }
+
+          var key = panelKeyForSection(raw);
+          show(key || current || "research", false);
+          target.scrollIntoView();
+        }
+
+        TABS.forEach(function (t) {
+          document
+            .getElementById(t.tab)
+            .addEventListener("click", function () {
+              show(t.key, true);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        });
+
+        window.addEventListener("hashchange", applyHash);
+
+        // ---- Scrollspy, scoped to the visible panel ----
+        function activate(nav, hash) {
+          nav.querySelectorAll("a").forEach(function (link) {
             link.classList.toggle("is-active", link.hash === hash);
           });
         }
 
-        // Highlight the last section whose heading has passed the top of the
-        // viewport. Position-based rather than intersection-based so that jump
-        // scrolls (anchor clicks, restored positions) resolve correctly too.
         function sync() {
+          var nav = navFor(current);
+          if (!nav) return;
+
+          var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+          var sections = links
+            .map(function (link) {
+              return document.querySelector(link.hash);
+            })
+            .filter(Boolean);
+          if (!sections.length) return;
+
           var atBottom =
             window.innerHeight + window.scrollY >=
             document.body.offsetHeight - 2;
           if (atBottom) {
-            activate("#" + sections[sections.length - 1].id);
+            activate(nav, "#" + sections[sections.length - 1].id);
             return;
           }
 
-          var current = sections[0];
+          // Highlight the last heading that has passed the top of the viewport.
+          var currentSection = sections[0];
           sections.forEach(function (section) {
-            if (section.getBoundingClientRect().top <= 120) current = section;
+            if (section.getBoundingClientRect().top <= 120)
+              currentSection = section;
           });
-          activate("#" + current.id);
+          activate(nav, "#" + currentSection.id);
         }
 
         var ticking = false;
@@ -876,6 +948,8 @@
           { passive: true }
         );
         window.addEventListener("resize", sync);
+
+        applyHash();
         sync();
       })();
     </script>
